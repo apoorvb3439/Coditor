@@ -10,7 +10,7 @@ function setup()
 
 	// Start a socket connection to the server
     // Some day we would run this server somewhere else
- 	socket = io.connect('https://crazycorona.now.sh'/*'http://localhost:3000'*/);
+ 	socket = io.connect('https://coditor.herokuapp.com/'/*'http://localhost:3000'*/);
 	teamId=prompt("Enter Your Team Id : (Please be case sensitive)");
 	socket.emit("teamId",teamId);
     teamIdp=$("#teamId");
