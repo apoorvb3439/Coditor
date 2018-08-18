@@ -5,22 +5,19 @@ let textArea;
 // Keep teamId in it
 let teamId;
 
-function setup()
-{
-
-	// Start a socket connection to the server
-    // Some day we would run this server somewhere else
+// Start a socket connection to the server
+// Some day we would run this server somewhere else
  	socket = io.connect('https://coditor.herokuapp.com/'/*'http://localhost:3000'*/);
 	teamId=prompt("Enter Your Team Id : (Please be case sensitive)");
 	socket.emit("teamId",teamId);
-    teamIdp=$("#teamId");
+	teamIdp=$("#teamId");
 	let p=""+teamIdp.text()+teamId;
 	teamIdp.text(p);
 
-	textArea=select("#textArea");
+	textArea=$("#textArea");
 	textArea.value("");
-	$('textArea').attr('cols',windowWidth/8);
-	$('textArea').attr('rows',windowHeight/30);
+	$('#textArea').attr('cols',windowWidth/8);
+	$('#textArea').attr('rows',windowHeight/30);
 	$("#textArea").keypress(function(k){
         if(k.which!=8&&k.which!=46){
     		var data={
@@ -79,9 +76,6 @@ function setup()
 
 }
 
-function draw() {
-  // Nothing
-}
 
 function syncing(){
 	socket.emit("Sync",{
