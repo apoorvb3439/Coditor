@@ -17,8 +17,6 @@ function setup(){
 
 	textArea=$("#textArea");
 	textArea.val("");
-	$('#textArea').attr('cols',windowWidth/8);
-	$('#textArea').attr('rows',windowHeight/30);
 	$("#textArea").keypress(function(k){
         if(k.which!=8&&k.which!=46){
     		var data={
