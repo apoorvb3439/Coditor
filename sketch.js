@@ -5,6 +5,9 @@ let textArea;
 // Keep teamId in it
 let teamId;
 
+$(document).ready(setup);
+
+function setup(){
 // Start a socket connection to the server
 // Some day we would run this server somewhere else
  	socket = io.connect('https://coditor.herokuapp.com/'/*'http://localhost:3000'*/);
