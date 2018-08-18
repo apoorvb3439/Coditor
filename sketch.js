@@ -29,7 +29,7 @@ function setup()
                 id: socket.id,
     		};
     		socket.emit("CharCode",data);
-            console.log("keypress : "+k.which+", "+k.keyCode);
+            //console.log("keypress : "+k.which+", "+k.keyCode);
         }
 	});
 	$("#textArea").keydown(function(k){
@@ -40,7 +40,7 @@ function setup()
                 id: socket.id,
 			};
 			socket.emit("CharCode",data);
-            console.log("keydown : "+k.which+", "+k.keyCode);
+            //console.log("keydown : "+k.which+", "+k.keyCode);
 		}});
 
 	$('#sync').click(syncing);
@@ -61,7 +61,7 @@ function setup()
     				t=t.substring(0,data.index)+t.substring(data.index+1,len);
                 }else if(data.char==190){
                     t=t.substring(0,data.index)+"."+t.substring(data.index,len);
-                    console.log(". recieved");
+                    //console.log(". recieved");
                 }else{
     				t=t.substring(0,data.index)+String.fromCharCode(data.char)+t.substring(data.index,len);
     			}
