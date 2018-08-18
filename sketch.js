@@ -16,7 +16,7 @@ function setup(){
 	teamIdp.text(p);
 
 	textArea=$("#textArea");
-	textArea.value("");
+	textArea.val("");
 	$('#textArea').attr('cols',windowWidth/8);
 	$('#textArea').attr('rows',windowHeight/30);
 	$("#textArea").keypress(function(k){
@@ -51,7 +51,7 @@ function setup(){
         // When we receive data
         function(data) {
             if(socket.id!=data.id){
-              	let t=textArea.value();
+              	let t=textArea.val();
     		  	let len=t.length;
     			if(data.char==8){
     				t=t.substring(0,data.index-1)+t.substring(data.index,len);
@@ -63,7 +63,7 @@ function setup(){
                 }else{
     				t=t.substring(0,data.index)+String.fromCharCode(data.char)+t.substring(data.index,len);
     			}
-    		  	textArea.value(t);
+    		  	textArea.val(t);
             }
         }
     );
@@ -71,7 +71,7 @@ function setup(){
     // receive sync message
 	socket.on('Sync',function(data){
         if(socket.id!=data.id){
-		        textArea.value(data.t);
+		        textArea.val(data.t);
         }
 	});
 
@@ -80,22 +80,22 @@ function setup(){
 
 function syncing(){
 	socket.emit("Sync",{
-                        t: textArea.value(),
+                        t: textArea.val(),
                         id: socket.id,
                         }
                 );
 }
 
 function deletingAll(){
-	textArea.value("");
+	textArea.val("");
 	syncing();
 }
 
 function backspacing(){
 	let index= $('#textArea').prop("selectionStart");
-	let t=textArea.value();
+	let t=textArea.val();
 	let len=t.length;
 	t=t.substring(0,index-1)+t.substring(index,len);
-	textArea.value(t);
+	textArea.val(t);
 	syncing();
 }
